@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dreamik-Cart</title>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/logo.jpg" alt=""><h1>DreamikAI</h1></div>
+        <div class="logo-des"><h2>Customize </h2><div><input type="text" class="search" placeholder="Search..."></div></div>
+    </header>
+    <div class="main">
+        <div class="t-head">
+            <h2>My-Cart</h2>
+            </div>
+        <table>
+            <tr><th>Product</th><th>Price</th><th>Quantity</th></tr>
+            <tr>
+                <td>Product 1</td>
+                <td>100</td>
+                <td><button onclick="add1()">+</button ><input type="text" id="q1" value="1" disabled><button onclick="sub1()">-</button></td>
+            </tr>
+            <tr>
+                <td>Product 2</td>
+                <td>120</td>
+                <td><button onclick="add2()">+</button><input type="text" id="q2" value="1" disabled><button onclick="sub2()">-</button></td>
+            </tr>
+            <tr>
+                <td>Product 3</td>
+                <td>100</td>
+                <td><button onclick="add3()">+</button><input type="text" id="q3" value="1" disabled><button onclick="sub3()">-</button></td>
+            </tr>
+            <tr>
+                <td>Product 4</td>
+                <td>110</td>
+                <td><button onclick="add4()">+</button><input type="text" id="q4" value="1" disabled><button onclick="sub4()">-</button></td>
+            </tr>
+            <tr>
+                <td>Product 5</td>
+                <td>120</td>
+                <td><button onclick="add5()">+</button><input type="text" id="q5" value="1" disabled><button onclick="sub5()">-</button></td>
+            </tr>
+           <tr>
+            <th colspan="2">Subtotal</th>
+            <td><input type="text" value="550" disabled class="subtotal" id="subtotal"></td>
+           </tr>
+           <tr><th colspan="3" style="text-align: left; border: none;padding: 10px;"><button onclick="saveCart()" class="checkout">Checkout</button></th></tr>
+        </table>
+    </div>
+    <footer>
+        <div class="foot">   
+        <div class="logo"><img src="images/logo.jpg" alt=""><h2>DreamikAI</h2></div>
+        <div class="address">
+            <h4>MURVEN Infotech Design Solutions LLP</h4>
+            <h4>Suite No.548, Mount Road, Anna Salai,</h4>
+            <h4>Chennai - 600 002, Tamil Nadu, India</h4>
+            <h4>General Inquiries: +91-44-28505188</h4>
+            <h4>Email: murven.design@gmail.com</h4>
+            <h4>GST: 33ABPFM6846A1Z8</h4>
+            <h4>https://www.murven.in</h4>
+        </div>
+        </div>
+        <div class="foot foot2">
+            <h2>useful Links</h2>
+            <h4><a href="https://www.dreamik.in/privacy-policy" target="_blank">Privacy Policy</a></h4>
+            <h4><a href="https://www.dreamik.in/store-terms" target="_blank">Terms & Conditions</a></h4>
+            <h4><a href="https://www.dreamik.in/return-and-refund-policy" target="_blank">Return and Refund</a></h4>
+            <h4><a href="https://www.dreamik.in/abouts-us" target="_blank">About Us</a></h4>
+            <h4><a href="https://www.dreamik.in/contact" target="_blank">Contact Us</a></h4>
+        </div>
+        <div class="foot foot2">
+            <h2><a href="">Social Links</a></h2>
+            <h4><a href="">Facebook</a></h4>
+            <h4><a href="">Instagram</a></h4>
+            <h4><a href="">LinkedIn</a></h4>
+            <h4><a href="">Youtube</a></h4>
+            <h4><a href="">Twitter</a></h4>
+        </div>
+    </footer>
+    <div style="color:white;text-align:center;padding:25px;background-color: rgb(14,14,130);">
+        <h5>© 2023 by Dreamik AI. Created by Sanads Digital</h5>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

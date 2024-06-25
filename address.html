@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dreamik-Address</title>
+    <style>
+        .ad2-form .f-tbl th,td{
+    border: none;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><div><img src="images/logo.jpg" alt=""></div><div ><h1>DreamikAI</h1></div></div>
+        <div class="logo-des"><h2>Customize </h2><div><input type="text" class="search" placeholder="Search..."></div></div>
+    </header>
+    <div class="add-box">
+        <div class="ad-form">
+            
+        <form id="address" action="">
+            <label for="name">Name*</label><br>
+            <input type="text" placeholder="Enter your Name" name="name" id="name" required><br><br>
+            <label for="careof">Care Of</label><br>
+            <input type="text" placeholder="Enter Care of Your Children" name="careOf" id="careof" required><br><br>
+            <label for="mobno">Mobile Number*</label><br>
+            <input type="text" placeholder="Enter your Mobile Number" name="mobno" id="mobno" required><br>
+            <div class="iswh"><div><input type="checkbox" name="whatsapp" id="whatsapp"></div><div><label for="whatsapp"> Is This your whatsapp No</label></div></div>
+        <br>
+            <div class="wha">
+                <label for="wtno">WhatsApp Number*</label><br>
+                <input type="text" placeholder="Enter your WhatsApp Number" name="wtno" id="wtno"><br><br>
+            </div>            <label for="email">Email Id</label><br>
+            <input type="email" placeholder="Enter your Email Id" name="email" id="email" required><br><br>
+            <label for="address">Address Line 1*</label><br>
+            <input type="text" placeholder="Enter your Address" name="address" id="address" required><br><br>
+            <label for="address2">Address Line 2</label><br>
+            <input type="text" placeholder="Enter your Address" name="address2" id="address2"><br><br>
+            <label for="pincode">Pincode*</label><br>
+            <input type="number" onchange="handlePincodeChange(event)" placeholder="Enter your Pincode" name="pincode" id="pincode"required><br><br>
+            <label for="district">District</label><br>
+            <input type="text" placeholder="Enter your District" name="district" id="district" required><br><br>
+            <label for="state">State</label><br>
+            <input type="text" placeholder="Enter your State" name="state" id="state" required><br><br>
+            <label for="landmark">Landmark</label><br>
+            <input type="text" placeholder="Enter your landmark" name="landmark" id="landmark" required><br><br>
+            <label for="country">Country</label><br>
+            <input type="text" value="India" disabled name="country">
+        </div>
+        <div class="pay-con">
+            <table id="pay_tbl">
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>HSN Code</th>
+                    <th>Subtotal</th>
+                    <th>GST</th>
+                    <th>Sub Price</th>
+                </tr>            </table>
+            <div class="ad2-form">
+                <table class="f-tbl">
+                    <tr><th colspan="3">Payment Type</th></tr>
+                    <tr><td><input type="radio" id="ptype2" name="ptype" value="normaldelivery" required></td><td><label for="ptype2"> Normal Delivery</label></td></tr>
+                    <tr><td><input type="radio" id="ptype1" name="ptype" value="expressdelivery" required></td><td><label for="ptype1">Express Delivery</label></td></tr>
+            
+                    <tr><th colspan="3">Mode of Delivery</th></tr>
+                    <tr><td><input type="radio" id="dmode1" name="dmode" value="onlinedelivery" required></td><td><label for="dmode1"> Online Delivery</label></td></tr>
+                    <tr><td><input type="radio" id="dmode2" name="dmode" value="cashondelivery" required></td><td><label for="dmode2"> Cash On Delivery</label></td></tr>
+                </table>
+                <div style="margin-top: 15px;"></div>
+                <label for="discount"><b>Discount:</b></label><br>
+                <input type="text" name="discount" id="discount" placeholder="Enter Your Discount Coupon">
+                <div style="margin-top: 15px;"></div>
+                <button id="submit" type="submit" class="otp ot">Order Now</button>
+                <div style="margin-top: 15px; text-align: left; padding: 1px;">
+                    <button class="otp" id="whatsapp" onclick="handleSendWhatsApp()" style="margin-right: 20px;">Whatsapp</button>
+                    <button id="mail" onclick="handleSendEmail()" class="otp">Mail</button>
+                </div>                </div>
+            </form>
+
+        </div>
+    </div>
+    <footer>
+        <div class="foot">   
+            <div class="logo"><img src="images/logo.jpg" alt=""><h2>DreamikAI</h2></div>
+            <div class="address">
+                <h4>MURVEN Infotech Design Solutions LLP</h4>
+                <h4>Suite No.548, Mount Road, Anna Salai,</h4>
+                <h4>Chennai - 600 002, Tamil Nadu, India</h4>
+                <h4>General Inquiries: +91-44-28505188</h4>
+                <h4>Email: murven.design@gmail.com</h4>
+                <h4>GST: 33ABPFM6846A1Z8</h4>
+                <h4>https://www.murven.in</h4>
+            </div>
+        </div>
+        <div class="foot foot2">
+            <h2>useful Links</h2>
+            <h4><a href="https://www.dreamik.in/privacy-policy" target="_blank">Privacy Policy</a></h4>
+            <h4><a href="https://www.dreamik.in/store-terms" target="_blank">Terms & Conditions</a></h4>
+            <h4><a href="https://www.dreamik.in/return-and-refund-policy" target="_blank">Return and Refund</a></h4>
+            <h4><a href="https://www.dreamik.in/abouts-us" target="_blank">About Us</a></h4>
+            <h4><a href="https://www.dreamik.in/contact" target="_blank">Contact Us</a></h4>
+        </div>
+        <div class="foot foot2">
+            <h2>Social Links</h2>
+            <h4>Facebook</h4>
+            <h4>Instagram</h4>
+            <h4>LinkedIn</h4>
+            <h4>Youtube</h4>
+            <h4>Twitter</h4>
+        </div>
+    </footer>
+    <div style="color:white;text-align:center;padding:25px;background-color: rgb(14,14,130);">
+        <h5>© 2023 by Dreamik AI. Created by Sanads Digital</h5>
+    </div>
+    <script>
+        var sum=0;
+        var netsum=0;
+        // Function to populate the payment table with cart data
+        function populatePaymentTable() {
+            var cartData = JSON.parse(localStorage.getItem('cartData') || '{}');
+
+            let products = [
+                { name: "Product 1", unitPrice: 100, hsnCode: "HSN-123", gstRate: 18 },
+                { name: "Product 2", unitPrice: 120, hsnCode: "HSN-234", gstRate: 16 },
+                { name: "Product 3", unitPrice: 100, hsnCode: "HSN-123", gstRate: 16 },
+                { name: "Product 4", unitPrice: 110, hsnCode: "HSN-345", gstRate: 18 },
+                { name: "Product 5", unitPrice: 120, hsnCode: "HSN-345", gstRate: 18 }
+            ];
+
+            let pay_tbl = document.getElementById("pay_tbl");
+            products.forEach((product, index) => {
+                let quantity = parseInt(cartData[`q${index + 1}`]) || 0;
+                if (quantity > 0) {
+                    let subtotal = quantity * product.unitPrice;
+                    let gst = subtotal * (product.gstRate / 100);
+                    let subPrice = subtotal + gst;
+                    sum+=subPrice;
+                    pay_tbl.innerHTML += `<tr>
+                        <td>${product.name}</td>
+                        <td>${quantity}</td>
+                        <td>${product.unitPrice}</td>
+                        <td>${product.hsnCode}</td>
+                        <td>${subtotal}</td>
+                        <td>${(gst/2).toFixed(2)}</td>
+                        <td>${subPrice.toFixed(2)}</td>
+                    </tr>`;}
+            });
+            netsum=sum+50;
+            pay_tbl.innerHTML+=`<tr><th colspan="6">Total Amount with GST</th><th>Rs ${sum.toFixed(2)}</th></tr><tr><th colspan="6">Shipping Charges</th><th>Rs 50</th></tr><tr><th colspan="6">Total Amount with GST</th><th id="totalamtElement">Rs ${(parseFloat(sum)+50).toFixed(2)}</th></tr>`
+                
+        }
+
+        // Function to handle pincode change event
+        async function handlePincodeChange(event) {
+            let pincode = event.target.value;
+            if (pincode.length === 6) {
+                try {
+                    let response = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+                    let data = await response.json();
+                    if (data[0].Status === "Success") {
+                        let postOffice = data[0].PostOffice[0];
+                        document.getElementById('district').value = postOffice.District;
+                        document.getElementById('state').value = postOffice.State;
+                    } else {
+                        alert("Invalid pincode");
+                    }
+                } catch (error) {
+                    console.error('Error fetching pincode details:', error);
+                }
+            }
+        }
+        const handleSendWhatsApp = () => {
+            let cartData = JSON.parse(localStorage.getItem('cartData') || '{}');
+    const message = `
+        Order Details:\n
+        Amount with Your Products is Rs ${cartData.subtotal}\n
+        Shipping Charges is Rs 50
+        Total amount need to pay is Rs ${sum}
+    `;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleSendEmail = () => {
+    
+    let cartData = JSON.parse(localStorage.getItem('cartData') || '{}');
+    const subject = "Order Confirmation";
+    const message = `
+        Order Details:
+        Amount with Your Products is ${cartData.subtotal}
+        Total amount need to pay is ${sum}
+    `;
+
+    const mailtoUrl = `mailto:?subject=${subject}&body=${encodeURIComponent(message)}`;
+    window.open(mailtoUrl, '_blank');
+  };
+        // Call the function to populate the payment table when the page loads
+        document.addEventListener('DOMContentLoaded', populatePaymentTable);
+        function logSelectedValues() {
+            let totalamtElement = document.getElementById("totalamtElement");
+            let totval = sum + 50;  // Start with the base value plus a default increment
+            let ptype = document.getElementsByName("ptype");
+            let dmode = document.getElementsByName("dmode");
+            let selectedPtypeValue;
+            let selectedDmodeValue;
+
+            // Calculate additional amount based on selected payment type
+            for (let i = 0; i < ptype.length; i++) {
+                if (ptype[i].checked) {
+                    selectedPtypeValue = ptype[i].value;
+                    if (selectedPtypeValue === "expressdelivery") {
+                        totval += 90;
+                    }
+                    break;
+                }
+            }
+
+            // Calculate additional amount based on selected delivery mode
+            for (let i = 0; i < dmode.length; i++) {
+                
+                let submit = document.getElementById("submit");
+                if (dmode[i].checked) {
+                    selectedDmodeValue = dmode[i].value;
+                    if (selectedDmodeValue === "cashondelivery") {
+                        totval += 50;
+                        submit.innerHTML = "Order Now";
+                    } else {
+                        submit.innerHTML = "Pay Now";
+                    }
+                    break;
+                }
+            }
+
+            // Update the total amount displayed
+            totalamtElement.innerHTML = `Rs ${totval.toFixed(1)}`;
+
+            console.log("Selected Payment Type: " + selectedPtypeValue);
+            console.log("Selected Mode of Delivery: " + selectedDmodeValue);
+            console.log("Total Amount: Rs " + totval);
+        }
+
+        let submit = document.getElementById('address');
+        submit.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = "otp.html"; // Redirect to otp.html
+        });
+        // Add event listeners to radio buttons
+        window.onload = function() {
+
+            let ptype = document.getElementsByName("ptype");
+            let dmode = document.getElementsByName("dmode");
+            let iswh=document.getElementById("whatsapp");
+            
+            iswh.addEventListener('change', ()=>{
+                let what = document.querySelector('.wha');
+                what.classList.toggle('whats')
+                
+            })
+
+            for (let i = 0; i < ptype.length; i++) {
+                ptype[i].addEventListener('change', logSelectedValues);
+            }
+
+            for (let i = 0; i < dmode.length; i++) {
+                dmode[i].addEventListener('change', logSelectedValues);
+            }
+        };
+
+        
+    </script>
+</body>
+</html>

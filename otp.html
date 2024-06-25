@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP in JS</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        .body {
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+            text-align: center;
+        }
+        .form h1 {
+            margin-bottom: 20px;
+        }
+        .form input {
+            width: 300px;
+            padding: 10px;
+        }
+        .otpverify {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .otpverify input {
+            padding: 10px;
+            width: 230px;
+            margin-right: 7px;
+        }
+        .btn {
+            border: none;
+            width: 60px;
+            cursor: pointer;
+            padding: 12px 3px;
+            color: white;
+            background-color: rgb(14,14,130);
+        }
+        .btn:hover {
+            background-color: rgb(57, 57, 117);
+        }
+        #confirm {
+            padding-top: 10vh;
+            text-align: center;
+            height: 40vh;
+            color: rgb(14,14,130);
+            display: none;
+        }
+        .btnx {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <div><img src="images/logo.jpg" alt=""></div>
+            <div><h1>DreamikAI</h1></div>
+        </div>
+        <div class="logo-des">
+            <h2>Customize </h2>
+            <div><input type="text" class="search" placeholder="Search..."></div>
+        </div>
+    </header>
+
+    
+
+    <div class="body" id="body">
+        <div class="form">
+            <h1>Order Confirmation</h1>
+            <table id="pay_tbl">
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>HSN Code</th>
+                    <th>Subtotal</th>
+                    <th>GST</th>
+                    <th>Sub Price</th>
+                </tr>
+            </table>
+            <input type="email" id="email" placeholder="Enter Email...">
+            <div class="otpverify">
+                <input type="text" id="otp_inp" placeholder="Enter the OTP sent to your Email...">
+                <button class="btn" id="otp-btn">Verify</button>
+            </div>
+            <button class="btn btnx" onclick="sendOTP()">Send OTP</button>
+        </div>
+    </div>
+   
+    </div>
+    <div id="confirm">
+        <h1>Order Confirmed</h1>
+</div>
+    <footer>
+        <div class="foot">   
+            <div class="logo"><img src="images/logo.jpg" alt=""><h2>DreamikAI</h2></div>
+            <div class="address">
+                <h4>MURVEN Infotech Design Solutions LLP</h4>
+                <h4>Suite No.548, Mount Road, Anna Salai,</h4>
+                <h4>Chennai - 600 002, Tamil Nadu, India</h4>
+                <h4>General Inquiries: +91-44-28505188</h4>
+                <h4>Email: murven.design@gmail.com</h4>
+                <h4>GST: 33ABPFM6846A1Z8</h4>
+                <h4>https://www.murven.in</h4>
+            </div>
+        </div>
+        <div class="foot foot2">
+            <h2>Useful Links</h2>
+            <h4><a href="https://www.dreamik.in/privacy-policy" target="_blank">Privacy Policy</a></h4>
+            <h4><a href="https://www.dreamik.in/store-terms" target="_blank">Terms & Conditions</a></h4>
+            <h4><a href="https://www.dreamik.in/return-and-refund-policy" target="_blank">Return and Refund</a></h4>
+            <h4><a href="https://www.dreamik.in/abouts-us" target="_blank">About Us</a></h4>
+            <h4><a href="https://www.dreamik.in/contact" target="_blank">Contact Us</a></h4>
+        </div>
+        <div class="foot foot2">
+            <h2><a href="">Social Links</a></h2>
+            <h4><a href="">Facebook</a></h4>
+            <h4><a href="">Instagram</a></h4>
+            <h4><a href="">LinkedIn</a></h4>
+            <h4><a href="">Youtube</a></h4>
+            <h4><a href="">Twitter</a></h4>
+        </div>
+    </footer>
+    <div style="color:white;text-align:center;padding:25px;background-color: rgb(14,14,130);">
+        <h5>© 2023 by Dreamik AI. Created by Sanads Digital</h5>
+    </div>
+    <script>
+        (function() {
+            emailjs.init("aBpQc8OCMIz7ZxUTd"); // Your EmailJS public key
+        })();
+
+        function sendOTP() {
+            const email = document.getElementById('email').value;
+            const otpverify = document.getElementsByClassName('otpverify')[0];
+            const otp_inp = document.getElementById('otp_inp');
+            const otp_btn = document.getElementById('otp-btn');
+
+            if (!email) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            let otp_val = Math.floor(1000 + Math.random() * 9000); // 4-digit OTP
+
+            let emailParams = {
+                user_email: email,
+                otp: otp_val
+            };
+
+            emailjs.send('service_x3qalza', 'template_p740c0f', emailParams)
+                .then(function(response) {
+                    if (response.status === 200) {
+                        alert("OTP sent to your email " + email);
+                        otpverify.style.display = "block";
+
+                        otp_btn.onclick = function() {
+                            let pay_tbl = document.getElementById("pay_tbl");
+                            let confirm_pay_tbl = document.getElementById("confirm_pay_tbl");
+                            let confirm = document.getElementById("confirm");
+                            let body = document.getElementById("body");
+
+                            if (otp_inp.value == otp_val) {
+                                alert("Email address verified.");
+                                body.style.display = 'none';
+                                confirm.style.display='block';
+                                populatePaymentTable();
+                            } else {
+                                alert("Invalid OTP");
+                            }
+                        }
+                    } else {
+                        alert("Failed to send OTP. Please try again.");
+                    }
+                }, function(error) {
+                    alert("Failed to send OTP. Please try again.");
+                    console.error("Error: ", error);
+                });
+        }
+
+        function populatePaymentTable() {
+            var cartData = JSON.parse(localStorage.getItem('cartData') || '{}');
+            
+            let products = [
+                { name: "Product 1", unitPrice: 100, hsnCode: "HSN-123", gstRate: 18 },
+                { name: "Product 2", unitPrice: 120, hsnCode: "HSN-234", gstRate: 16 },
+                { name: "Product 3", unitPrice: 100, hsnCode: "HSN-123", gstRate: 16 },
+                { name: "Product 4", unitPrice: 110, hsnCode: "HSN-345", gstRate: 18 },
+                { name: "Product 5", unitPrice: 120, hsnCode: "HSN-345", gstRate: 18 }
+            ];
+
+            let pay_tbl = document.getElementById("pay_tbl");
+            let sum = 0;
+            
+            products.forEach((product, index) => {
+                let quantity = parseInt(cartData[`q${index + 1}`]) || 0;
+                if (quantity > 0) {
+                    let subtotal = quantity * product.unitPrice;
+                    let gst = subtotal * (product.gstRate / 100);
+                    let subPrice = subtotal + gst;
+                    sum += subPrice;
+                    pay_tbl.innerHTML += `<tr>
+                        <td>${product.name}</td>
+                        <td>${quantity}</td>
+                        <td>${product.unitPrice}</td>
+                        <td>${product.hsnCode}</td>
+                        <td>${subtotal.toFixed(2)}</td>
+                        <td>${gst.toFixed(2)}</td>
+                        <td>${subPrice.toFixed(2)}</td>
+                    </tr>`;
+                }
+            });
+
+            const shippingCharges = 50;
+            const netSum = sum + shippingCharges;
+
+            pay_tbl.innerHTML += `
+                <tr>
+                    <th colspan="6">Total Amount with GST</th>
+                    <th>Rs ${sum.toFixed(2)}</th>
+                </tr>
+                <tr>
+                    <th colspan="6">Shipping Charges</th>
+                    <th>Rs ${shippingCharges.toFixed(2)}</th>
+                </tr>
+                <tr>
+                    <th colspan="6">Total Amount Payable</th>
+                    <th id="totalamtElement">Rs ${netSum.toFixed(2)}</th>
+                </tr>`;
+        }
+
+        // Call the function to populate the payment table on page load
+        window.onload = populatePaymentTable;
+    </script>
+</body>
+</html>
